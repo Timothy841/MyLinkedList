@@ -18,5 +18,17 @@ public class Node{
   public Node getPrev(){
     return prev;
   }
+
+  public void set(String a){
+    data = a;
+  }
+
+  public void setNext(Node a){
+    next = a;
+  }
+
+  public void setPrev(Node a){
+    prev = a;
+  }
   //write get/set methods for all three instance variables.
 }
