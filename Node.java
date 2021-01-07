@@ -7,7 +7,7 @@ public class Node{
    data = value;
   }
 
-  public String get(){
+  public String getData(){
     return data;
   }
 
@@ -19,7 +19,7 @@ public class Node{
     return prev;
   }
 
-  public void set(String a){
+  public void setData(String a){
     data = a;
   }
 
