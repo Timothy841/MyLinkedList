@@ -42,7 +42,7 @@ public class MyLinkedList{
       start.setNext(null);
       start.setPrev(null);
     }
-    if (index==0){
+    else if (index==0){
       Node c = a;
       a = start;
       start = c;
@@ -136,6 +136,7 @@ public class MyLinkedList{
   public void extend(MyLinkedList other){
     this.end.setNext(other.start);
     other.start.setPrev(this.end);
+    this.end = other.end;
     this.size = this.size+other.size();
     other.size = 0;
   }
