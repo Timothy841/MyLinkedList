@@ -113,6 +113,21 @@ public class MyLinkedList{
    }
    return "["+a+"]";
   }
+  
+  public String toStringReversed(){
+   String a = "";
+   Node curr = end;
+   for (int i = 0;i<size;i++){
+     if (i<size-1){
+       a+=curr.getData()+", ";
+     }
+     else{
+       a+=curr.getData();
+     }
+     curr = curr.getPrev();
+   }
+   return "["+a+"]";
+  }
 
   private Node find(int a){
     Node b;
