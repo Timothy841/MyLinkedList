@@ -133,6 +133,13 @@ public class MyLinkedList{
     return b.getData();
   }
 
+  public void extend(MyLinkedList other){
+    this.end.setNext(other.start);
+    other.start.setPrev(this.end);
+    this.size = this.size+other.size();
+    other.size = 0;
+  }
+
   public String toString(){
    String a = "";
    Node curr = start;
