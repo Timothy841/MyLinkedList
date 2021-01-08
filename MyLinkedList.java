@@ -83,9 +83,19 @@ public class MyLinkedList{
   }
 
   public Node find(int a){
-    Node b = start;
-    for (int i = 0; i<a; i++){
-      b = b.getNext();
+    Node b;
+    if (a < size/2){
+      b = start;
+      for (int i = 0; i<a; i++){
+        b = b.getNext();
+      }
+    }
+    else{
+      b = end;
+      for (int i = size; i>a; i--){
+        b = b.getPrev();
+        System.out.println("sd");
+      }
     }
     return b;
   }
