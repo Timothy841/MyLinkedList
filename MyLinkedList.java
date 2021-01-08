@@ -76,8 +76,8 @@ public class MyLinkedList{
     }
     Node a = new Node(value);
     Node b = find(index);
+    Node c = a;
     if (index==0){
-      Node c = a;
       a = start;
       start = c;
       a.getNext().setPrev(start);
@@ -86,7 +86,6 @@ public class MyLinkedList{
       return a.getData();
     }
     else if (index == size){
-      Node c = a;
       a = end;
       end = c;
       a.getPrev().setNext(end);
@@ -105,22 +104,21 @@ public class MyLinkedList{
     if (index<0 || index>size){
       throw new IndexOutOfBoundsException();
     }
+    Node a = start;
     if (size == 1){
-      Node a = start;
       start = null;
       end = null;
       size--;
       return a.getData();
     }
     else if (index == 0){
-      Node a = start;
       start = start.getNext();
       start.setPrev(null);
       size--;
       return a.getData();
     }
     else if (index == size){
-      Node a = end;
+      a = end;
       end = end.getPrev();
       end.setNext(null);
       size--;
@@ -173,9 +171,18 @@ public class MyLinkedList{
 
   private Node find(int a){
     Node b;
-    b = start;
-    for (int i = 0; i<a; i++){
-      b = b.getNext();
+    if (a<=size/2){
+      b = start;
+      for (int i = 0; i<a; i++){
+        b = b.getNext();
+      }
+    }
+    else{
+      b = end;
+      for (int i = size-1;i>a;i--){
+        b = b.getPrev();
+        System.out.println(toString());
+      }
     }
     return b;
   }
