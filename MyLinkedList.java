@@ -63,8 +63,11 @@ public class MyLinkedList{
     size++;
     return true;
   }
+
+  public String get(int index){
+    return find(index).getData();
+  }
   /*
-  public String get(int index);
   public String set(int index, String value);
   */
   public String toString(){
@@ -79,10 +82,10 @@ public class MyLinkedList{
      }
      curr = curr.getNext();
    }
-   return a;
+   return "["+a+"]";
   }
 
-  public Node find(int a){
+  private Node find(int a){
     Node b;
     if (a < size/2){
       b = start;
@@ -94,7 +97,6 @@ public class MyLinkedList{
       b = end;
       for (int i = size; i>a; i--){
         b = b.getPrev();
-        System.out.println("sd");
       }
     }
     return b;
