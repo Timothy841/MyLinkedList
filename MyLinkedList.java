@@ -67,9 +67,38 @@ public class MyLinkedList{
   public String get(int index){
     return find(index).getData();
   }
-  /*
-  public String set(int index, String value);
-  */
+
+  public String set(int index, String value){
+    if (index<0 || index>size){
+      throw new IndexOutOfBoundsException();
+    }
+    Node a = new Node(value);
+    Node b = find(index);
+    if (index==0){
+      Node c = a;
+      a = start;
+      start = c;
+      a.getNext().setPrev(start);
+      start.setNext(a.getNext());
+      start.setPrev(null);
+      return a.getData();
+    }
+    else if (index == size){
+      Node c = a;
+      a = end;
+      end = c;
+      a.getPrev().setNext(end);
+      end.setPrev(a.getPrev());
+      end.setNext(null);
+      return a.getData();
+    }
+    a.setNext(b.getNext());
+    a.setPrev(b.getPrev());
+    b.getPrev().setNext(a);
+    b.getNext().setPrev(a);
+    return b.getData();
+  }
+
   public String toString(){
    String a = "";
    Node curr = start;
