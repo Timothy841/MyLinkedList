@@ -101,6 +101,38 @@ public class MyLinkedList{
     return b.getData();
   }
 
+  public String remove(int index){
+    if (index<0 || index>size){
+      throw new IndexOutOfBoundsException();
+    }
+    if (size == 1){
+      Node a = start;
+      start = null;
+      end = null;
+      size--;
+      return a.getData();
+    }
+    else if (index == 0){
+      Node a = start;
+      start = start.getNext();
+      start.setPrev(null);
+      size--;
+      return a.getData();
+    }
+    else if (index == size){
+      Node a = end;
+      end = end.getPrev();
+      end.setNext(null);
+      size--;
+      return a.getData();
+    }
+    Node b = find(index);
+    b.getNext().setPrev(b.getPrev());
+    b.getPrev().setNext(b.getNext());
+    size--;
+    return b.getData();
+  }
+
   public String toString(){
    String a = "";
    Node curr = start;
